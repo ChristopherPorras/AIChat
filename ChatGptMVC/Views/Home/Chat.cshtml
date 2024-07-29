@@ -18,23 +18,19 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-
         .chat-box {
             max-height: 400px;
             overflow-y: auto;
         }
-
         .chat-message {
             margin: 10px 0;
         }
-
-            .chat-message.user {
-                text-align: right;
-            }
-
-            .chat-message.bot {
-                text-align: left;
-            }
+        .chat-message.user {
+            text-align: right;
+        }
+        .chat-message.bot {
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -68,7 +64,7 @@
                 $("#user-input").val("");
 
                 $.ajax({
-                    url: '@Url.Action("GetChatResponse", "Home")',
+                    url: '/Home/GetChatResponse',
                     method: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify({ userInput: userInput }),

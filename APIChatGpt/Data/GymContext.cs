@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using APIChatGpt.Models;
+using Microsoft.AspNetCore.Routing;
 
 namespace APIChatGpt.Data
 {
@@ -10,6 +11,12 @@ namespace APIChatGpt.Data
         public DbSet<Exercise> Exercises { get; set; }
         public DbSet<Machine> Machines { get; set; }
         public DbSet<Trainer> Trainers { get; set; }
-        public DbSet<APIChatGpt.Models.Service> Services { get; set; } // Usa el namespace completo para evitar conflicto
+        public DbSet<Service> Services { get; set; }
+        public DbSet<Muscle> Muscles { get; set; }
+        public DbSet<Routine> Routines { get; set; }
+        public DbSet<Training> Trainings { get; set; }
+        public DbSet<Diet> Diets { get; set; }
+        public DbSet<FitnessProgram> FitnessPrograms { get; set; }
+        public DbSet<HealthService> HealthServices { get; set; }
     }
 }
