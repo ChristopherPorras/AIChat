@@ -18,5 +18,5 @@ Esta API revolucionaria utiliza inteligencia artificial para ofrecer funcionalid
 
 ## Imágenes
 
-![Screenshot 2024-07-30 011428](Images/Screenshot%202024-07-30%20011428.png)
-![Screenshot 2024-07-30 011456](Images/Screenshot%202024-07-30%20011456.png)
+![Screenshot 2024-07-30 011428](https://github.com/ChristopherPorras/ChatGptMVC/blob/master/ChatGptMVC/Images/Screenshot%202024-07-30%20011428.png)
+![Screenshot 2024-07-30 011456](https://github.com/ChristopherPorras/ChatGptMVC/blob/master/ChatGptMVC/Images/Screenshot%202024-07-30%20011456.png)
