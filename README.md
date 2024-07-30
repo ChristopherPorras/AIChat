@@ -2,6 +2,10 @@
 
 ![AI](https://img.icons8.com/ios-filled/100/000000/artificial-intelligence.png)
 
+## Descripción del API
+
+Esta API revolucionaria utiliza inteligencia artificial para ofrecer funcionalidades avanzadas y personalizadas. Integra capacidades de aprendizaje automático y procesamiento de lenguaje natural para proporcionar respuestas precisas y contextualmente relevantes. Ideal para proyectos que requieren una interacción dinámica y adaptativa con los usuarios.
+
 ## Tecnologías Utilizadas
 
 ![C#](https://img.icons8.com/color/48/000000/c-sharp-logo.png)
@@ -14,6 +18,5 @@
 
 ## Imágenes
 
-![Imagen 1](Images/imagen1.png)
-![Imagen 2](Images/imagen2.png)
-
+![Screenshot 2024-07-30 011428](Images/Screenshot%202024-07-30%20011428.png)
+![Screenshot 2024-07-30 011456](Images/Screenshot%202024-07-30%20011456.png)
