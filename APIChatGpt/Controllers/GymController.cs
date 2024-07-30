@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +16,7 @@ namespace APIChatGpt.Controllers
     {
         private readonly GymContext _context;
         private readonly OpenAIService _openAIService;
+        private static List<string> _previousQuestions = new List<string>();
 
         public GymController(GymContext context, OpenAIService openAIService)
         {
@@ -25,29 +27,32 @@ namespace APIChatGpt.Controllers
         [HttpPost("chat")]
         public async Task<IActionResult> GetChatResponse([FromBody] UserInputModel userInputModel)
         {
+            if (userInputModel == null || string.IsNullOrWhiteSpace(userInputModel.UserInput))
+            {
+                return BadRequest("Input cannot be empty.");
+            }
+
             var userInput = userInputModel.UserInput;
+            _previousQuestions.Add(userInput);
+            var contextPrompt = string.Join("\n", _previousQuestions);
             var gymDataResponse = await GetGymDataResponse(userInput);
 
             string response;
 
             if (IsFitnessRelated(userInput))
             {
-                if (!string.IsNullOrEmpty(gymDataResponse))
-                {
-                    var detailedPrompt = $"{gymDataResponse}\nPregunta: {userInput}";
-                    response = await _openAIService.GetResponseAsync(detailedPrompt);
-                }
-                else
-                {
-                    response = await _openAIService.GetResponseAsync(userInput);
-                }
+                string combinedPrompt = string.IsNullOrEmpty(gymDataResponse)
+                    ? contextPrompt
+                    : $"{contextPrompt}\n{gymDataResponse}";
+
+                response = await _openAIService.GetResponseAsync(combinedPrompt);
             }
             else
             {
                 response = "Lo siento, solo puedo ayudarte con temas relacionados con el gimnasio y el fitness.";
             }
 
-            return Ok(response);
+            return Ok(new { response });
         }
 
         private bool IsFitnessRelated(string input)
@@ -119,6 +124,21 @@ namespace APIChatGpt.Controllers
             }
 
             return null;
+        }
+
+        // Métodos GET para verificar datos en la base de datos
+        [HttpGet("exercises")]
+        public async Task<IActionResult> GetExercises()
+        {
+            var exercises = await _context.Exercises.ToListAsync();
+            return Ok(exercises);
+        }
+
+        [HttpGet("diets")]
+        public async Task<IActionResult> GetDiets()
+        {
+            var diets = await _context.Diets.ToListAsync();
+            return Ok(diets);
         }
     }
 }

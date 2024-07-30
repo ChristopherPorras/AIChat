@@ -1,21 +1,28 @@
 using Microsoft.EntityFrameworkCore;
-using APIChatGpt.Services;
 using APIChatGpt.Data;
+using APIChatGpt.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configurar DbContext
+// Configurar DbContext con el ensamblado de migraciones especificado
 builder.Services.AddDbContext<GymContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+    b => b.MigrationsAssembly("APIChatGpt"))); // Especificar el ensamblado de migraciones
 
 // Configurar OpenAIService
 builder.Services.AddSingleton<OpenAIService>();
+
+// Configurar CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+});
 
 var app = builder.Build();
 
@@ -27,6 +34,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAllOrigins");
 
 app.UseAuthorization();
 
