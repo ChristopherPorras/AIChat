@@ -9,13 +9,13 @@ This revolutionary API utilizes artificial intelligence to offer advanced and pe
 ## Technologies Used
 
 ![C#](https://img.icons8.com/color/48/000000/c-sharp-logo.png)
-![ASP.NET](https://img.icons8.com/color/48/000000/asp-net.png)
+![ASP.NET](https://raw.githubusercontent.com/github/explore/main/topics/dotnet/dotnet.png)
 ![SQL Server](https://img.icons8.com/color/48/000000/microsoft-sql-server.png)
 ![JavaScript](https://img.icons8.com/color/48/000000/javascript.png)
 ![HTML5](https://img.icons8.com/color/48/000000/html-5.png)
 ![CSS3](https://img.icons8.com/color/48/000000/css3.png)
 ![Bootstrap](https://img.icons8.com/color/48/000000/bootstrap.png)
-![OpenAI](https://img.icons8.com/external-soft-fill-juicy-fish/60/000000/external-artificial-intelligence-technologies-soft-fill-soft-fill-juicy-fish.png)
+![OpenAI](https://upload.wikimedia.org/wikipedia/commons/4/4a/OpenAI_Logo.svg)
 
 ## Images
 
